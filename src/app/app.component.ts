@@ -3,14 +3,15 @@ import {Component} from '@angular/core';
 @Component({
     selector: 'app-root',
     template: `
-    <input type="text"
-           [value]="value"
-           [attr.aria-invalid]="error"
-           [class.is-valid]="!error"
-           (input)="onInput($event.target.value)">
-    <p [innerHTML]="message"
-       [style.color]="error ? 'red' : 'green'"></p>
-  `
+        <input type="text"
+               [value]="value"
+               [attr.aria-invalid]="error"
+               [class.is-valid]="!error"
+               (input)="onInput($event.target.value)">
+        <button (click)="reset()">Reset</button>
+        <p [innerHTML]="message"
+           [style.display]="error ? 'block' : 'none'"></p>
+    `
 })
 export class AppComponent {
     value: string = '';
@@ -23,8 +24,13 @@ export class AppComponent {
             this.message = 'Value is too long';
             this.error = true;
         } else {
-            this.message = 'All is fine...';
             this.error = false;
         }
+    }
+
+    reset() {
+        this.error = false;
+        this.value = '';
+        this.message = '';
     }
 }
