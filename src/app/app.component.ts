@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, ChangeDetectionStrategy} from '@angular/core';
 
 @Component({
     selector: 'app-root',
@@ -19,20 +19,23 @@ import {Component} from '@angular/core';
             <h3>Clear</h3>
             <button (click)="clear()">Clear</button>
         </div>
-    `
+    `,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
-    people: string[] = ['Francisco', 'Daniel'];
+    people: string[] = ['Andreas', 'Gion'];
 
     add(name: string) {
+        this.people = this.people.slice();
         this.people.push(name);
     }
 
     clear() {
-        this.people.length = 0;
+        this.people = [];
     }
 
     edit(index: string, name: string) {
+        this.people = this.people.slice();
         this.people[index] = name;
     }
 }
