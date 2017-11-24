@@ -1,8 +1,10 @@
 import {Injectable} from '@angular/core';
+import {Subject} from 'rxjs/Rx';
 
 @Injectable()
 export class LogService {
     static globalLoggerNr: number = 0;
+    logs: Subject<string> = new Subject();
     loggerNr: number;
 
     constructor() {
@@ -11,7 +13,9 @@ export class LogService {
 
     log(message: string) {
         setTimeout(() => {
-            console.log(`Logger(${this.loggerNr}): ${message}`);
+            const formatted: string = `Logger(${this.loggerNr}): ${message}`;
+            console.log(formatted);
+            this.logs.next(formatted);
         }, 1000);
     }
 }

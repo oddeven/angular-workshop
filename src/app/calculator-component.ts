@@ -5,26 +5,25 @@ import {Observable} from 'rxjs/Rx';
 
 @Component({
     selector: 'calculator',
-    providers: [CalculationService],
     template: `
-    <div>
-      <input [formControl]="a" type="number">
-    </div>
-    <div>
-      <select [formControl]="operator">
-        <option value="add">+</option>
-        <option value="subtract">-</option>
-        <option value="multiply">*</option>
-        <option value="divide">/</option>
-      </select>
-    </div>
-    <div>
-      <input [formControl]="b" type="number">
-    </div>
-    <div>
-      Result: {{result | async}}
-    </div>
-  `
+        <div>
+            <input [formControl]="a" type="number">
+        </div>
+        <div>
+            <select [formControl]="operator">
+                <option value="add">+</option>
+                <option value="subtract">-</option>
+                <option value="multiply">*</option>
+                <option value="divide">/</option>
+            </select>
+        </div>
+        <div>
+            <input [formControl]="b" type="number">
+        </div>
+        <div>
+            Result: {{result | async}}
+        </div>
+    `
 })
 export class CalculatorComponent {
     result: Observable<number>;
