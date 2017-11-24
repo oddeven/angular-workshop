@@ -1,14 +1,17 @@
 import {Component, Inject} from '@angular/core';
+import {FormControl} from '@angular/forms';
 import {CalculationService} from './calculation-service';
+import {Observable} from 'rxjs/Rx';
 
 @Component({
-  selector: 'calculator',
-  template: `
+    selector: 'calculator',
+    providers: [CalculationService],
+    template: `
     <div>
-      <input #a (input)="calculate(a.value, b.value, operator.value)" type="number">
+      <input [formControl]="a" type="number">
     </div>
     <div>
-      <select #operator (input)="calculate(a.value, b.value, operator.value)">
+      <select [formControl]="operator">
         <option value="add">+</option>
         <option value="subtract">-</option>
         <option value="multiply">*</option>
@@ -16,22 +19,32 @@ import {CalculationService} from './calculation-service';
       </select>
     </div>
     <div>
-      <input #b (input)="calculate(a.value, b.value, operator.value)" type="number">
+      <input [formControl]="b" type="number">
     </div>
     <div>
-      Result: {{result}}
+      Result: {{result | async}}
     </div>
   `
 })
 export class CalculatorComponent {
-  result: number = 0;
-  calculationService: CalculationService;
+    result: Observable<number>;
+    calculationService: CalculationService;
+    a: FormControl = new FormControl();
+    b: FormControl = new FormControl();
+    operator: FormControl = new FormControl();
 
-  constructor(@Inject(CalculationService) calculationService: CalculationService) {
-    this.calculationService = calculationService;
-  }
-
-  calculate(a: string, b: string, operator: string) {
-    this.result = this.calculationService[operator](+a, +b);
-  }
+    constructor(@Inject(CalculationService) calculationService: CalculationService) {
+        this.calculationService = calculationService;
+        this.result = Observable
+            .combineLatest(
+                this.operator.valueChanges,
+                this.a.valueChanges,
+                this.b.valueChanges
+            )
+            .debounceTime(300)
+            .mergeMap(values => {
+                const [operator, a, b] = values;
+                return this.calculationService[operator](+a, +b);
+            });
+    }
 }
