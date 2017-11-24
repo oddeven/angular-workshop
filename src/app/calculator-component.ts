@@ -3,7 +3,6 @@ import {CalculationService} from './calculation-service';
 
 @Component({
   selector: 'calculator',
-  providers: [CalculationService],
   template: `
     <div>
       <input #a (input)="calculate(a.value, b.value, operator.value)" type="number">

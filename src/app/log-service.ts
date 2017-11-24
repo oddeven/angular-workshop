@@ -1,3 +1,6 @@
+import {Injectable} from '@angular/core';
+
+@Injectable()
 export class LogService {
   static globalLoggerNr: number = 0;
   loggerNr: number;
