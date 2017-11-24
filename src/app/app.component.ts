@@ -1,9 +1,17 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
-  selector: 'app-root',
-  template: `<p>{{message}}</p>`
+    selector: 'app-root',
+    template: `
+        <p *ngFor="let message of messages; let i = index">{{i}}: {{message | toUpper}}</p>
+        <input #inp type="text">
+        <button (click)="addMessage(inp.value)">Add</button>
+    `
 })
 export class AppComponent {
-  message: string  = 'Hello World!';
+    messages: string[] = ['One', 'Two', 'Three'];
+
+    addMessage(message: string) {
+        this.messages.push(message);
+    }
 }
