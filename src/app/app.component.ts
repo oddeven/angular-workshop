@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
-  selector: 'app-root',
-  template: `<p>{{message}}</p>`
+    selector: 'app-root',
+    template: `
+        <calculator></calculator>
+    `
 })
 export class AppComponent {
-  message: string  = 'Hello World!';
+
 }
