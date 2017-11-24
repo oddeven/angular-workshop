@@ -5,6 +5,10 @@ import {Component} from '@angular/core';
     template: `
         <timer-signal-field>
             <timer-signal></timer-signal>
+            <timer-signal></timer-signal>
+            <timer-signal></timer-signal>
+            <timer-signal></timer-signal>
+            <timer-signal></timer-signal>
         </timer-signal-field>
     `
 })
