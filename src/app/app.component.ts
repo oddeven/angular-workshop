@@ -3,15 +3,17 @@ import {Component} from '@angular/core';
 @Component({
     selector: 'app-root',
     template: `
-        <p *ngFor="let message of messages; let i = index">{{i}}: {{message | toUpper}}</p>
+        <p *ngFor="let message of messages; let i = index; let even = even"
+           [style.backgroundColor]="even ? 'lightgray' : null">{{i}}: {{message | charCount}}</p>
         <input #inp type="text">
-        <button (click)="addMessage(inp.value)">Add</button>
+        <button (click)="addMessage(inp)">Add</button>
     `
 })
 export class AppComponent {
     messages: string[] = ['One', 'Two', 'Three'];
 
-    addMessage(message: string) {
-        this.messages.push(message);
+    addMessage(inputElement: HTMLInputElement) {
+        this.messages.push(inputElement.value);
+        inputElement.value = '';
     }
 }
