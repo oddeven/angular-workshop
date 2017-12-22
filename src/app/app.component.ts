@@ -1,10 +1,10 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-    selector: 'app-root',
-    template: `
-        <calculator></calculator>
-    `
+  selector: 'app-root',
+  template: `
+    <calculator></calculator>
+  `
 })
 export class AppComponent {
 
