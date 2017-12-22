@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {CollapsibleComponent} from './collapsible-component';
+import { Component } from '@angular/core';
+import { CollapsibleComponent } from './collapsible.component';
 
 @Component({
   selector: 'app-root',
