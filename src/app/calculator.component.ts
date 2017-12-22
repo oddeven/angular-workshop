@@ -1,5 +1,5 @@
-import {Component, Inject} from '@angular/core';
-import {CalculationService} from './calculation-service';
+import { Component, Inject } from '@angular/core';
+import { CalculationService } from './calculation.service';
 
 @Component({
   selector: 'calculator',
