@@ -1,5 +1,5 @@
-import {Component, ContentChild} from '@angular/core';
-import {TimerSignalComponent} from './timer-signal-component';
+import { AfterContentInit, Component, ContentChild } from '@angular/core';
+import { TimerSignalComponent } from './timer-signal.component';
 
 @Component({
   selector: 'timer-signal-field',
@@ -11,7 +11,7 @@ import {TimerSignalComponent} from './timer-signal-component';
     </div>
   `
 })
-export class TimerSignalFieldComponent {
+export class TimerSignalFieldComponent implements AfterContentInit {
   @ContentChild(TimerSignalComponent) timerSignal: TimerSignalComponent;
   isOn: boolean;
 
@@ -20,7 +20,7 @@ export class TimerSignalFieldComponent {
   }
 
   turnOn() {
-    if(!this.isOn) {
+    if (!this.isOn) {
       this.timerSignal.start();
       this.isOn = true;
     }
