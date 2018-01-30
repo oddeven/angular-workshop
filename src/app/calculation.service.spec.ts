@@ -24,6 +24,6 @@ describe('CalculationService', () => {
   });
 
   it('CalculationService should calculate power correctly', () => {
-    expect(service.power(10,  10)).toEqual(100);
+    expect(service.power(10,  2)).toEqual(100);
   });
 });
