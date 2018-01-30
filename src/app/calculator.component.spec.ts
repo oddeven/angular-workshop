@@ -21,7 +21,11 @@ describe('Calculator Component', () => {
     expect(titleElement.textContent).toContain('Calculator');
   });
 
-  // TODO: Add test that confirms 2 + 2 = 4 using the calculator component.
-  // Verify that the result span in the DOM matches the result of the component.
-  // Tip: You can use fixture.detectChanges() to trigger change detection.
+  it('should calculate add correctly', () => {
+    component.calculate('2', '2', 'add');
+    expect(component.result).toEqual(4);
+    fixture.detectChanges();
+    const resultElement = element.querySelector('.result');
+    expect(+resultElement.textContent).toEqual(component.result);
+  });
 });
