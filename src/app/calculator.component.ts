@@ -5,6 +5,7 @@ import { CalculationService } from './calculation.service';
   selector: 'calculator',
   providers: [CalculationService],
   template: `
+    <h1>Calculator</h1>
     <div>
       <input #a (input)="calculate(a.value, b.value, operator.value)" type="number">
     </div>
@@ -20,7 +21,7 @@ import { CalculationService } from './calculation.service';
       <input #b (input)="calculate(a.value, b.value, operator.value)" type="number">
     </div>
     <div>
-      Result: {{result}}
+      Result: <span class="result">{{result}}</span>
     </div>
   `
 })
