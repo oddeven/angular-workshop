@@ -7,8 +7,19 @@ describe('CalculationService', () => {
     expect(service).toBeTruthy();
   });
 
-  // TODO: Test service.add
-  // TODO: Test service.subtract
-  // TODO: Test service.multiply
-  // TODO: Test service.divide
+  it('CalculationService should calculate add correctly', () => {
+    expect(service.add(2,  2)).toEqual(4);
+  });
+
+  it('CalculationService should calculate subtract correctly', () => {
+    expect(service.subtract(4,  2)).toEqual(2);
+  });
+
+  it('CalculationService should calculate multiply correctly', () => {
+    expect(service.multiply(3,  3)).toEqual(9);
+  });
+
+  it('CalculationService should calculate divide correctly', () => {
+    expect(service.divide(10,  2)).toEqual(5);
+  });
 });
