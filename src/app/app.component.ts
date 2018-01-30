@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  template: `<p>{{message}}</p>`
+  templateUrl: './app.component.html',
+  styleUrls: ['app.component.scss']
 })
 export class AppComponent {
-  message: string  = 'Hello World!';
+
 }
