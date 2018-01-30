@@ -17,4 +17,8 @@ export class CalculationService {
   divide(a: number, b: number): number {
     return a / b;
   }
+
+  power(a: number, b: number): number {
+    return Math.pow(a, b);
+  }
 }
