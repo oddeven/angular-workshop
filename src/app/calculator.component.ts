@@ -6,7 +6,7 @@ import { CalculationService } from './calculation.service';
   providers: [CalculationService],
   template: `
     <div>
-      <input #a (input)="calculate(a.value, b.value, operator.value)" type="number">
+      <input #a (input)="calculate(a.value, b.value, operator.value)" type="number" data-test-selector="first-input">
     </div>
     <div>
       <select #operator (input)="calculate(a.value, b.value, operator.value)">
@@ -17,10 +17,10 @@ import { CalculationService } from './calculation.service';
       </select>
     </div>
     <div>
-      <input #b (input)="calculate(a.value, b.value, operator.value)" type="number">
+      <input #b (input)="calculate(a.value, b.value, operator.value)" type="number" data-test-selector="second-input">
     </div>
     <div>
-      Result: {{result}}
+      Result: <span data-test-selector="result">{{result}}</span>
     </div>
   `
 })
