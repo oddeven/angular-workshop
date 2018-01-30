@@ -22,6 +22,6 @@ describe('angular-workshop App', () => {
 
   it('should read "DEVELOP ACROSS ALL PLATFORMS" as title for the first section on angular.io', async () => {
     await browser.get('https://angular.io');
-     //TODO: implement
+    await page.assertAngularFirstSectionTitle();
   });
 });

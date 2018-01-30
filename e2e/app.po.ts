@@ -30,4 +30,10 @@ export class AppPage {
     const result = await element(by.css(`${this.container} [data-test-selector="result"]`));
     expect(await result.getText()).toEqual(value.toString());
   }
+
+  async assertAngularFirstSectionTitle() {
+    const title = await element(by.css('.homepage-container .text-headline'));
+    const text = await title.getText();
+    expect(text).toEqual('DEVELOP ACROSS ALL PLATFORMS');
+  }
 }
