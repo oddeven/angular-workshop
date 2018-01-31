@@ -7,9 +7,10 @@ import {Component} from '@angular/core';
            [value]="value"
            [attr.aria-invalid]="error"
            [class.is-valid]="!error"
-           (input)="onInput($event.target.value)">
+           (input)="onInput($event.target.value)" />
     <p [innerHTML]="message"
-       [style.color]="error ? 'red' : 'green'"></p>
+       [style.color]="error ? 'red' : 'green'">
+    </p>
   `
 })
 export class AppComponent {
